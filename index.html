@@ -52,9 +52,9 @@
         .grid {
             display: grid;
             grid-template-columns: repeat(4, 1fr);
-            gap: 20px;
+            gap: 10px;
             justify-content: center;
-            margin: 20px auto;
+            margin: 20px;
         }
         .grid-item {
             width: 100px;
@@ -109,6 +109,20 @@
         }
         .btn:hover {
             cursor: pointer; /* Change to pointer cursor on hover */
+        }
+
+        @media (max-width: 600px) {
+            .grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 0px;
+                max-width: 100%;
+                justify-content: center;
+            }
+            .grid-item {
+                width: 100px;
+                height: 100px;
+                margin: 10px auto;
+            }
         }
     </style>
 </head>
@@ -236,10 +250,6 @@
 });
 
 
-
-
-
-   
     </script>
 </body>
 </html>
