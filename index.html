@@ -76,6 +76,11 @@
         .grid-item.selected {
             border: 3px solid #ffcc00;
         }
+        .sepfooter {
+        padding: 10px; /* Adjust the padding as needed */
+        text-align: center;
+        color: #ccc;
+        }
         .description {
             margin-top: 20px;
             font-size: 18px;
@@ -113,10 +118,10 @@
         <div class="divider"></div>
     
         <div class="grid">
-            <div class="grid-item selected" data-description="Generate and outpaint AI images from text prompts." data-ios-downloadurl="https://apps.apple.com/it/app/promptai-art-generator/id6480349093" data-android-downloadurl="https://your_android_download_url_ai">
+            <div class="grid-item selected" data-description="Generate and outpaint AI images from text prompts." data-ios-downloadurl="https://apps.apple.com/it/app/promptai-art-generator/id6480349093" data-android-downloadurl="https://play.google.com/store/apps/details?id=com.promptaiart.images">
               <img src="icons/site-icon.png" alt="Icon 1">
             </div>
-            <div class="grid-item" data-description="Upscale and restore low res images up to 8k." data-ios-downloadurl="https://apps.apple.com/us/app/ultrasharp-ai-upscaler/id6482996004" data-android-downloadurl="https://your_android_download_url_upscale">
+            <div class="grid-item" data-description="Upscale and restore low res images up to 8k." data-ios-downloadurl="https://apps.apple.com/us/app/ultrasharp-ai-upscaler/id6482996004" data-android-downloadurl="https://play.google.com/store/apps/details?id=com.promptaiart.images">
               <img src="icons/ultrasharp.jpg" alt="Icon 2">
             </div>
             <div class="grid-item" data-description="Outpaint on an infinite canvas to expand images beyond their border." data-ios-downloadurl="https://apps.apple.com/us/app/ai-infinity-canvas/id6450460086" data-android-downloadurl="https://your_android_download_url_outpaint">
@@ -131,9 +136,14 @@
             <button class="btn" data-platform="android" data-downloadurl="android_download_url">Download for Android</button>
           </div>
         <div class="description">Generate AI images from text prompts with different models.</div>
-        <div class="footer">
-            <a href="#">Apps</a> · <a href="#">Gallery</a>
+        <div class="sepfooter">
+            <a href="#"></a> <a href="#"></a>
         </div>
+
+        <div class="footer">
+            <a href="#"></a> info@latentlake.com · 2024 <a href="#"></a>
+        </div>
+
     </div>
 
     <script>
@@ -141,6 +151,27 @@
   const gridItems = document.querySelectorAll('.grid-item');
   const descriptionElement = document.querySelector('.description');
   const downloadButtons = document.querySelectorAll('.app-buttons .btn');
+
+  function initializePage() {
+        // Select the first grid item by default
+        const firstGridItem = gridItems[0];
+        firstGridItem.classList.add('selected');
+
+        // Update description based on selected item
+        const description = firstGridItem.getAttribute('data-description');
+        descriptionElement.textContent = description;
+
+        // Update download URLs based on selected item
+        const iosDownloadUrl = firstGridItem.getAttribute('data-ios-downloadurl');
+        const androidDownloadUrl = firstGridItem.getAttribute('data-android-downloadurl');
+
+        // Update download buttons with new URLs
+        updateDownloadButtons(iosDownloadUrl, androidDownloadUrl);
+
+        console.log('Selected Item:', description);
+        console.log('iOS Download URL:', iosDownloadUrl);
+        console.log('Android Download URL:', androidDownloadUrl);
+    }
 
   // Function to update download buttons with URLs
   function updateDownloadButtons(iosUrl, androidUrl) {
@@ -153,6 +184,9 @@
       }
     });
   }
+
+  initializePage();
+
 
   gridItems.forEach(item => {
     item.addEventListener('click', () => {
