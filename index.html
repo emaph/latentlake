@@ -101,6 +101,12 @@
         .btn {
             cursor: pointer; /* Default to pointer cursor */
         }
+        .btn[disabled] {
+            opacity: 0.6; /* Reduced opacity for disabled state */
+            cursor: not-allowed; /* Change cursor to indicate disabled state */
+            background-color: #666; /* Grey background for disabled state */
+            color: #ccc; /* Lighter text color for disabled state */
+        }
         .btn:hover {
             cursor: pointer; /* Change to pointer cursor on hover */
         }
@@ -116,7 +122,8 @@
             <a href="https://medium.com/@emabyte"><i class="fab fa-medium"></i></a>
         </div>
         <div class="divider"></div>
-    
+        <div class="smalltitle">Apps</div>
+
         <div class="grid">
             <div class="grid-item selected" data-description="Generate and outpaint AI images from text prompts." data-ios-downloadurl="https://apps.apple.com/it/app/promptai-art-generator/id6480349093" data-android-downloadurl="https://play.google.com/store/apps/details?id=com.promptaiart.images">
               <img src="icons/site-icon.png" alt="Icon 1">
@@ -124,10 +131,10 @@
             <div class="grid-item" data-description="Upscale and restore low res images up to 8k." data-ios-downloadurl="https://apps.apple.com/us/app/ultrasharp-ai-upscaler/id6482996004" data-android-downloadurl="https://play.google.com/store/apps/details?id=com.promptaiart.images">
               <img src="icons/ultrasharp.jpg" alt="Icon 2">
             </div>
-            <div class="grid-item" data-description="Outpaint on an infinite canvas to expand images beyond their border." data-ios-downloadurl="https://apps.apple.com/us/app/ai-infinity-canvas/id6450460086" data-android-downloadurl="https://your_android_download_url_outpaint">
+            <div class="grid-item" data-description="Outpaint on an infinite canvas to expand images beyond their border." data-ios-downloadurl="https://apps.apple.com/us/app/ai-infinity-canvas/id6450460086">
               <img src="icons/infinity.jpg" alt="Icon 3">
             </div>
-            <div class="grid-item" data-description="Versatile AI Images generator with many settings, albeit generally slow." data-ios-downloadurl="https://your_ios_download_url_immaginai" data-android-downloadurl="https://your_android_download_url_immaginai">
+            <div class="grid-item" data-description="Versatile AI Images generator with many settings, albeit generally slow." data-ios-downloadurl="https://your_ios_download_url_immaginai">
               <img src="icons/immaginai.jpg" alt="Icon 4">
             </div>
           </div>
@@ -175,15 +182,17 @@
 
   // Function to update download buttons with URLs
   function updateDownloadButtons(iosUrl, androidUrl) {
-    downloadButtons.forEach(button => {
-      const platform = button.dataset.platform;
-      if (platform === 'ios') {
-        button.dataset.downloadurl = iosUrl;
-      } else if (platform === 'android') {
-        button.dataset.downloadurl = androidUrl;
-      }
-    });
-  }
+        downloadButtons.forEach(button => {
+            const platform = button.dataset.platform;
+            if (platform === 'ios') {
+                button.dataset.downloadurl = iosUrl;
+                button.disabled = !iosUrl; // Disable button if iosUrl is empty
+            } else if (platform === 'android') {
+                button.dataset.downloadurl = androidUrl;
+                button.disabled = !androidUrl; // Disable button if androidUrl is empty
+            }
+        });
+    }
 
   initializePage();
 
