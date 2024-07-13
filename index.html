@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Latent Lake</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="icon" href="icons/site-icon.png" type="image/x-icon">
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: black;
+            color: white;
+            font-family: Arial, sans-serif;
+        }
+        .container {
+            text-align: center;
+        }
+        .social-icons a {
+            margin: 0 10px;
+            color: white;
+            font-size: 24px;
+            text-decoration: none;
+        }
+        .social-icons a:hover {
+            color: #ffcc00;
+        }
+        .divider {
+            height: 1px;
+            width: 80%;
+            background-color: #666;
+            margin: 20px auto;
+        }
+        .app-buttons .btn {
+            display: inline-block;
+            margin: 10px 20px;
+            padding: 10px 20px;
+            color: white;
+            background-color: #333;
+            border: none;
+            border-radius: 5px;
+            text-decoration: none;
+            font-size: 16px;
+        }
+        .app-buttons .btn:hover {
+            background-color: #555;
+        }
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+            justify-content: center;
+            margin: 20px auto;
+        }
+        .grid-item {
+            width: 100px;
+            height: 100px;
+            background-color: #333;
+            border-radius: 15px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+            cursor: pointer;
+            margin: 10px;
+        }
+        .grid-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        .grid-item.selected {
+            border: 3px solid #ffcc00;
+        }
+        .description {
+            margin-top: 20px;
+            font-size: 18px;
+            color: #ccc;
+        }
+        .footer {
+            margin-top: 20px;
+            color: #ccc;
+        }
+        .footer a {
+            color: #ccc;
+            text-decoration: none;
+            margin: 0 5px;
+        }
+        .footer a:hover {
+            color: #ffcc00;
+        }
+        .btn {
+            cursor: pointer; /* Default to pointer cursor */
+        }
+        .btn:hover {
+            cursor: pointer; /* Change to pointer cursor on hover */
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Latent Lake</h1>
+        <div class="social-icons">
+            <a href="https://www.facebook.com/latentapps/"><i class="fab fa-facebook"></i></a>
+            <a href="https://discord.gg/k5j5EJZ9"><i class="fab fa-discord"></i></a>
+            <a href="https://www.instagram.com/latent.lake/"><i class="fab fa-instagram"></i></a>
+            <a href="https://medium.com/@emabyte"><i class="fab fa-medium"></i></a>
+        </div>
+        <div class="divider"></div>
+    
+        <div class="grid">
+            <div class="grid-item selected" data-description="Generate and outpaint AI images from text prompts." data-ios-downloadurl="https://apps.apple.com/it/app/promptai-art-generator/id6480349093" data-android-downloadurl="https://your_android_download_url_ai">
+              <img src="icons/site-icon.png" alt="Icon 1">
+            </div>
+            <div class="grid-item" data-description="Upscale and restore low res images up to 8k." data-ios-downloadurl="https://apps.apple.com/us/app/ultrasharp-ai-upscaler/id6482996004" data-android-downloadurl="https://your_android_download_url_upscale">
+              <img src="icons/ultrasharp.jpg" alt="Icon 2">
+            </div>
+            <div class="grid-item" data-description="Outpaint on an infinite canvas to expand images beyond their border." data-ios-downloadurl="https://apps.apple.com/us/app/ai-infinity-canvas/id6450460086" data-android-downloadurl="https://your_android_download_url_outpaint">
+              <img src="icons/infinity.jpg" alt="Icon 3">
+            </div>
+            <div class="grid-item" data-description="Versatile AI Images generator with many settings, albeit generally slow." data-ios-downloadurl="https://your_ios_download_url_immaginai" data-android-downloadurl="https://your_android_download_url_immaginai">
+              <img src="icons/immaginai.jpg" alt="Icon 4">
+            </div>
+          </div>
+        <div class="app-buttons">
+            <button class="btn" data-platform="ios" data-downloadurl="ios_download_url">Download for iOS</button>
+            <button class="btn" data-platform="android" data-downloadurl="android_download_url">Download for Android</button>
+          </div>
+        <div class="description">Generate AI images from text prompts with different models.</div>
+        <div class="footer">
+            <a href="#">Apps</a> · <a href="#">Gallery</a>
+        </div>
+    </div>
+
+    <script>
+ document.addEventListener('DOMContentLoaded', function() {
+  const gridItems = document.querySelectorAll('.grid-item');
+  const descriptionElement = document.querySelector('.description');
+  const downloadButtons = document.querySelectorAll('.app-buttons .btn');
+
+  // Function to update download buttons with URLs
+  function updateDownloadButtons(iosUrl, androidUrl) {
+    downloadButtons.forEach(button => {
+      const platform = button.dataset.platform;
+      if (platform === 'ios') {
+        button.dataset.downloadurl = iosUrl;
+      } else if (platform === 'android') {
+        button.dataset.downloadurl = androidUrl;
+      }
+    });
+  }
+
+  gridItems.forEach(item => {
+    item.addEventListener('click', () => {
+      // Remove 'selected' class from all grid items
+      gridItems.forEach(el => el.classList.remove('selected'));
+      // Add 'selected' class to the clicked grid item
+      item.classList.add('selected');
+
+      // Update description based on selected item
+      const description = item.getAttribute('data-description');
+      descriptionElement.textContent = description;
+
+      // Update download URLs based on selected item
+      const iosDownloadUrl = item.getAttribute('data-ios-downloadurl');
+      const androidDownloadUrl = item.getAttribute('data-android-downloadurl');
+
+      // Update download buttons with new URLs
+      updateDownloadButtons(iosDownloadUrl, androidDownloadUrl);
+
+      console.log('Selected Item:', description);
+      console.log('iOS Download URL:', iosDownloadUrl);
+      console.log('Android Download URL:', androidDownloadUrl);
+    });
+  });
+
+  // Event listener for download buttons
+  downloadButtons.forEach(button => {
+    button.addEventListener('click', () => {
+      const downloadUrl = button.dataset.downloadurl;
+
+      if (downloadUrl) {
+        window.open(downloadUrl, '_blank'); // Open download URL in new tab
+      } else {
+        console.error('No download URL specified for this button.');
+      }
+    });
+  });
+});
+
+
+
+
+
+   
+    </script>
+</body>
+</html>
