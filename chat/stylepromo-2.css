@@ -1,0 +1,272 @@
+body {
+    font-family: 'Ubuntu', Arial, sans-serif;
+    background: linear-gradient(135deg, #4a90e2, #5636f5); /* #9013fe); */
+    color: white;
+    display: flex;
+    justify-content: center;
+    flex-direction: column; /* Stack children vertically */
+
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    overflow: hidden; /* Prevent body from scrolling */
+}
+
+.main-container {
+    padding: 20px;
+    background-color: rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    max-width: 550px;
+    width: 100%;
+    padding-bottom: 0; /* Remove bottom padding */
+    max-height: 90vh; /* Set a max height */
+    overflow-y: auto; /* Allow internal scrolling */
+    box-sizing: border-box; /* Include padding in height/width */
+}
+
+/* Promo Counter */
+.promo-counter {
+    font-family: 'Ubuntu', 'Courier New', Courier, monospace;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+}
+
+.flip-board {
+    display: inline-block;
+    background-color: black;
+    color: #32CD32;
+    padding: 10px 20px;
+    border-radius: 5px;
+    font-size: 24px;
+    font-weight: bold;
+    letter-spacing: 2px;
+    text-shadow: 0 1px 1px rgba(0, 0, 0, 0.5);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+/* Chat Column */
+.chat-column {
+    margin-top: 30px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    padding: 0 20px; /* Added padding for better spacing */
+}
+
+/* Chat Bubbles */
+.chat-bubble {
+    max-width: 80%;
+    padding: 12px;
+    background-color: rgba(255, 255, 255, 0.2);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    color: white;
+    font-size: 14px;
+}
+
+/* Right-aligned bubble */
+.chat-bubble.right {
+    border-radius: 10px 0 10px 10px;
+
+    align-self: flex-end;
+    background-color: #fdfdfdf7;
+    text-align: left;
+    color: #000000; 
+}
+
+.chat-bubble.right2 {
+    align-self: flex-end;
+    background: linear-gradient(135deg, #d1f797e6, #b2ffa6); /* Add a subtle gradient */
+    text-align: left;
+    color: #000000; 
+    padding: 15px;
+    border-radius: 10px 0 10px 10px;
+
+    border: 2px solid #80e27e; /* Add a bright border */
+    box-shadow: 0 4px 15px rgba(0, 128, 0, 0.2); /* Add a soft shadow for depth */
+    position: relative;
+}
+
+.chat-bubble.right2::before {
+    content: ''; /* Add a premium-like icon (optional) */
+    font-size: 22px;
+    color: gold;
+    position: absolute;
+    top: -10px;
+    right: -10px;
+}
+
+/* Left-aligned bubble */
+.chat-bubble.left {
+    align-self: flex-start;
+    border-radius: 0 10px 10px 10px;
+
+    background-color: #f8fafff9;
+    text-align: left;
+    color: #000000; 
+
+}
+
+/* App Info Section */
+.app-info-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 20px 0;
+    background-color: rgba(0, 0, 0, 0.2);
+    border-radius: 10px;
+    padding: 20px;
+}
+
+.app-logo {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    margin-right: 20px;
+}
+
+.app-details h2 {
+    margin: 0;
+    font-size: 24px;
+}
+
+.app-details p {
+    margin: 5px 0 0;
+    font-size: 16px;
+    text-align: left;
+
+}
+
+.screen-app {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 20px;
+    margin-bottom: 0; /* Remove bottom margin */
+}
+
+.screen-app img {
+    width: 400px;
+    height: auto;
+    margin-right: 20px;
+}
+
+
+
+
+
+
+/* FOOTER */
+/* Footer styles */
+.footer {
+    background-color: #0c0c0c; /* Dark background color */
+    color: #fff; /* White text color */
+    text-align: center; /* Center text */
+    padding: 20px; /* Padding for spacing */
+    width: 100%; /* Full width */
+    position: relative; /* Allows for positioning of child elements */
+    box-sizing: border-box; /* Include padding in height/width */
+    margin-top: 20px; /* Add some space above the footer */
+}
+
+.footer-content {
+    font-size: 5px; /* Adjust this value as needed */
+    color: #fdfdfd;
+    max-width: 1200px; /* Maximum width for larger screens */
+    margin: 0 auto; /* Center footer content */
+}
+
+
+
+.footer a {
+    color: #61dafb; /* Link color */
+    text-decoration: none; /* Remove underline */
+}
+
+.footer a:hover {
+    text-decoration: underline; /* Underline on hover */
+}
+
+/* Responsive styles */
+@media (max-width: 600px) {
+    .footer {
+        padding: 12px; /* Reduce padding on small screens */
+    }
+
+    .footer p {
+        font-size: 11px; /* Smaller font size for mobile */
+    }
+}
+
+@media (min-width: 601px) {
+    .footer p {
+        font-size: 13px; /* Larger font size for desktop */
+    }
+}
+
+.social-icons {
+    margin: 20px 0;
+}
+
+.social-icons a {
+    margin: 0 10px;
+    color: white;
+    font-size: 24px;
+    text-decoration: none;
+}
+.social-icons a:hover {
+    color: #ffcc00;
+}
+
+
+
+.divider {
+    height: 1px;
+    width: 80%;
+    background-color: #666;
+    margin: 20px auto;
+}
+
+
+.promo-container {
+    max-width: 600px;
+    margin: 60px auto;
+    padding: 10px;
+    background-color: #ffcb51;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    font-family: 'Ubuntu', 'Arial', sans-serif;
+}
+
+.promo-text {
+    font-size: 14px;
+    font-family: 'Ubuntu', 'Courier New', Courier, monospace;
+    color: #000000;
+    margin-bottom: 15px;
+}
+
+.promo-email {
+    font-size: 14px;
+    font-family: 'Ubuntu', 'Courier New', Courier, monospace;
+    color: #000000;
+    margin-bottom: 20px;
+}
+
+
+.app-overview-image {
+    width: 100%;          /* Set the width of the logo */
+    height: 38%;         /* Set the height of the logo to match the width */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Add a subtle shadow */
+    object-fit: cover;    /* Ensure the image fills the area without distortion */
+    margin-right: 15px;   /* Space between logo and the app details */
+    border: 2px solid rgba(0, 0, 0, 0.1);    /* Optional border for definition */
+}
+
+
+.image-container {
+    text-align: center; /* Center the content */
+    margin: 20px 0; /* Optional: Add some vertical margin */
+}
